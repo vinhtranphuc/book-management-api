@@ -26,7 +26,14 @@
         + email: admin@gmail.com
         + password: 111111
       => Get access token response, then add to the header for requests to the authentication.
-    Example images:
-    1. Login
-    ![alt text](https://github.com/vinhtranphuc/book-management-api/blob/master/tutorial-image/login.png)
    
+ Turorial Images :
+ 
+  1. Login
+  ![alt text](https://github.com/vinhtranphuc/book-management-api/blob/master/tutorial-image/login.png)
+  
+  2. Book List
+  ![alt text](https://github.com/vinhtranphuc/book-management-api/blob/master/tutorial-image/all-books.png)
+  
+  3. Others
+  https://github.com/vinhtranphuc/book-management-api/blob/master/tutorial-image
