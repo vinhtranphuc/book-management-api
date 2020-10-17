@@ -75,7 +75,7 @@
 	</select>
 	
 	<insert id="insertBooksAuthors">
-		INSERT INTO BOOKS_AUTHORS (
+		INSERT INTO books_authors (
 			book_id,
 			author_id
 		) VALUES (
@@ -85,7 +85,7 @@
 	</insert>
 	
 	<insert id="insertBook">
-		INSERT INTO BOOKS(
+		INSERT INTO books(
 			description,
 			enabled,
 			image,
@@ -114,7 +114,7 @@
 	</delete>
 
 	<update id="updateBook">
-		UPDATE BOOKS
+		UPDATE books
 		SET
 			description = #{description},
 			enabled = #{enabled},
@@ -126,7 +126,7 @@
 	</update>
 	
 	<delete id="deleteBook">
-		DELETE FROM BOOKS
+		DELETE FROM books
 		WHERE
 			book_id = #{book_id}
 	</delete>
