@@ -68,9 +68,9 @@ public class DatabaseConfig {
     public DataSource dataSource() {
     	DriverManagerDataSource dataSource = new DriverManagerDataSource();
     	dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-    	dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/book?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull");
-        dataSource.setUsername("root");
-        dataSource.setPassword("root");
+    	dataSource.setUrl("jdbc:mysql://db4free.net/vinhbook?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull");
+        dataSource.setUsername("vinhbook");
+        dataSource.setPassword("vinhbook");
         return dataSource;
     }
 	
