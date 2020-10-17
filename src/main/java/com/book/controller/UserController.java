@@ -21,7 +21,7 @@ import com.book.service.UserService;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = {"http://localhost:3000","http://localhost:3001","http://127.0.0.1:3000","http://127.0.0.1:3001"})
+@CrossOrigin(origins = {"https://heroku-book-api.herokuapp.com","http://localhost:3000","http://localhost:3001","http://127.0.0.1:3000","http://127.0.0.1:3001"})
 public class UserController {
 
     @Autowired

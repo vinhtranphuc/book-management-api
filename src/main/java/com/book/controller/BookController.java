@@ -29,7 +29,7 @@ import com.book.service.LibaryService;
 
 @RestController
 @RequestMapping(value = "/api/book")
-@CrossOrigin(origins = {"http://localhost:3000","http://localhost:3001","http://127.0.0.1:3000","http://127.0.0.1:3001"})
+@CrossOrigin(origins = {"https://heroku-book-api.herokuapp.com","http://localhost:3000","http://localhost:3001","http://127.0.0.1:3000","http://127.0.0.1:3001"})
 public class BookController {
 
 	protected Logger logger = LoggerFactory.getLogger(BookController.class);

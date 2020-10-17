@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +25,7 @@ import com.book.service.UserService;
 
 @Controller
 @RequestMapping("/api/auth")
-//@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:3001", "http://127.0.0.1:3000",
-//		"http://127.0.0.1:3001" })
+@CrossOrigin(origins = {"https://heroku-book-api.herokuapp.com","http://localhost:3000","http://localhost:3001","http://127.0.0.1:3000","http://127.0.0.1:3001"})
 public class AuthController extends BaseController {
 
 	protected Logger logger = LoggerFactory.getLogger(AuthController.class);
