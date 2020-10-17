@@ -10,12 +10,14 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.book.payload.Response;
 
 
 @ControllerAdvice
+@EnableWebMvc
 public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     // error handle for @Valid

@@ -20,7 +20,7 @@
 		</choose>
 	</sql>
 	
-	<select id="selectAuthors" resultType="FieldMap">
+	<select id="selectAuthors" resultType="Map">
 		SELECT
 			<include refid="sqlAuthorFields"></include>
 		FROM

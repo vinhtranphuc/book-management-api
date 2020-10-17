@@ -34,7 +34,7 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @GetMapping("/me")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     public UserVO getCurrentUser(Authentication authentication) {
     	UserPrincipal currentUser = (UserPrincipal) authentication.getPrincipal();
         return userService.getUserById(currentUser.getId());

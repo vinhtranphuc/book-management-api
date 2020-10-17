@@ -9,12 +9,15 @@ import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 
 @Configuration
 @EnableWebSecurity
@@ -24,7 +27,16 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
         prePostEnabled = true
 )
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
+	
+	private static final String[] SWAGGER_AUTH_LIST = {
+	        // -- swagger ui
+	        "/swagger-resources/**",
+	        "/swagger-ui.html",
+	        "/v2/api-docs",
+	        "/webjars/**"
+	};
+	
+	@Autowired
     CustomUserDetailsService customUserDetailsService;
 
     @Autowired
@@ -67,6 +79,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                     .and()
                 .authorizeRequests()
+                	.antMatchers("/","/error",
+                        "/favicon.ico",
+                        "/fonts/*",
+                        "/**/*.png",
+                        "/**/*.gif",
+                        "/**/*.svg",
+                        "/**/*.jpg",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js",
+                        "/**/*.map")
+                        	.permitAll()
                     .antMatchers("/api/auth/**")
                         .permitAll()
                     .antMatchers("/api/book/book-list")
@@ -75,10 +99,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll()
                     .antMatchers(HttpMethod.POST,"/api/image/preview")
                         .permitAll()
+            	     .antMatchers(SWAGGER_AUTH_LIST)
+            	     	.permitAll()
                     .anyRequest()
                         .authenticated();
 
         // Add our custom JWT security filter
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+    }
+    
+    @Override
+    public void configure(WebSecurity webSecurity) throws Exception {
+    	super.configure(webSecurity);
+    	webSecurity.ignoring().antMatchers(SWAGGER_AUTH_LIST);
+        webSecurity.httpFirewall(allowUrlEncodedSlashHttpFirewall());
+    }
+
+    @Bean
+    public HttpFirewall allowUrlEncodedSlashHttpFirewall() {
+        StrictHttpFirewall firewall = new StrictHttpFirewall();
+        firewall.setAllowUrlEncodedSlash(true);
+        firewall.setAllowSemicolon(true);
+        return firewall;
     }
 }

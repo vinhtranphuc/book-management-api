@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @RestController
-@RequestMapping(value = "api/image")
+@RequestMapping(value = "/api/image")
 @CrossOrigin(origins = {"http://localhost:3000","http://localhost:3001","http://127.0.0.1:3000","http://127.0.0.1:3001"})
 public class ImageController {
 	

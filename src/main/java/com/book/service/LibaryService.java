@@ -89,7 +89,9 @@ public class LibaryService {
 	 * @return
 	 */
 	public <T> List<T> getAuthors() {
-		return authorMapper.selectAuthors();
+		List<T> authors = authorMapper.selectAuthors();
+		System.out.println("Getting data from DB : " + authors);
+		return authors;
 	}
 	
 	/**

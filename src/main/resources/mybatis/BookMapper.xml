@@ -70,6 +70,7 @@
 				ON ba.author_id = a.author_id
 		<include refid="sqlWhereBooks"></include>
 		GROUP BY b.book_id
+		ORDER BY b.book_id
 		<include refid="sqlPaginatorList"></include>
 	</select>
 	
