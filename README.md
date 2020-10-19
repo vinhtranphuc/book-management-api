@@ -13,7 +13,7 @@ Book Management
     Clone source
     Import Maven project at Eclipse
     Install maven
-    Edit your database sever at line 71,72,37 at DatabaseConfig.java
+    Edit your database sever at line 71,72,37 in DatabaseConfig.java
     Run BookManagementApplication > Your database sever will be auto create database as name "book"
 
   Api:
